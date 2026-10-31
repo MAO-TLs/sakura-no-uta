@@ -1,4 +1,4 @@
-import { matchesReaderText, readerMatchRanges } from '../../reader-search.mjs';
+import { matchesReaderText, readerMatchRanges } from '../reader-search.mjs';
 const PAGE_SIZE = 80;
 export function passageCount(count, matching = false) {
   return count.toLocaleString() + (matching ? ' matching ' : ' ') + (count === 1 ? 'line' : 'lines');
