@@ -17,10 +17,10 @@ test('Sakura releases the complete verified corpus and patch instructions',()=>{
   assert.match(home,/Download English patch/);
   assert.match(home,/<h1 id="title">SAKURA<br \/>NO UTA<\/h1>\s*<p class="dek">/);
   assert.doesNotMatch(home,/japanese-title/);
-  assert.match(home,/Patch version v1\.0\.3/);
+  assert.match(home,/Patch version v1\.0\.4/);
   assert.match(home,/href="#install"/);
   assert.match(home,/id="install"/);
-  assert.match(reader,/Script version v1\.0\.3/);
+  assert.match(reader,/Script version v1\.0\.4/);
   assert.match(home,/Updating an earlier MAO patch/);
   assert.match(home,/Removing the patch/);
   assert.match(home,/The game still shows Japanese or old text/);
@@ -56,6 +56,17 @@ test('every reader passage and search entry agrees, with only inert presentation
       choices+=row.en.html.includes('class="reader-choices"')?1:0;
       assert.doesNotMatch(row.en.html,/<ruby>/);
       assert.doesNotMatch(row.en.html,/\bHakki\b/);
+      // A voiced source line must remain in the speaker's dialogue channel.
+      // Source narration, thoughts, and quotations without a speaker are distinct.
+      if(row.ja.html.includes('class="speaker"') && row.ja.text.split('\n').slice(1).join('\n').startsWith('「')) {
+        assert.ok(row.en.html.includes('class="speaker"'),script.id+':'+row.key);
+        const utterance=row.en.text.split('\n').slice(1).join('\n');
+        assert.match(utterance,/^“/,script.id+':'+row.key);
+        // Open quotation continuations are used for recited multi-line verse.
+        if(utterance.includes('”')) {
+          assert.doesNotMatch(utterance.replace(/“[^”]*”/g,''),/[A-Za-z]/,script.id+':'+row.key);
+        }
+      }
       expected.push({script:script.id,key:row.key,ja:row.ja.text,en:row.en.text});
     }
   }
@@ -64,12 +75,21 @@ test('every reader passage and search entry agrees, with only inert presentation
   assert.deepEqual(search,expected);
 });
 
+test('prologue laughter remains audible dialogue with its speaker',()=>{
+  const {rows}=JSON.parse(read('data/scripts/00_op_01_1.json'));
+  for(const key of ['91','93','114','116','118','120']) {
+    const row=rows.find(r=>r.key===key);
+    assert.match(row.en.text,/^Naoya\n“[A-Za-z! ]+”$/);
+    assert.doesNotMatch(row.en.text,/laugh|burst|harder/);
+  }
+});
+
 test('download metadata and instructions identify the accepted game patch',()=>{
   const patch=JSON.parse(read('patch-release.json'));
   const home=read('index.html'),guide=read('patch-installation.txt');
-  assert.equal(patch.version,'1.0.3');
+  assert.equal(patch.version,'1.0.4');
   assert.equal(patch.passages,65164);
-  assert.equal(patch.patchSha256,'991540f34d26c9a888f65b9ab38de5896678d6f5153a4fba6eded4e74039a644');
+  assert.equal(patch.patchSha256,'b5a97beb88e35c33675cafd692d91f82bd0a1293791f45f78c61e0a4cc348bc8');
   assert.ok(home.includes(patch.downloadUrl));
   assert.ok(home.includes(patch.releaseUrl));
   assert.ok(guide.includes(patch.patchSha256));
