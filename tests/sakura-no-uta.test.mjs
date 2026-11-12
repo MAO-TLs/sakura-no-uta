@@ -17,10 +17,10 @@ test('Sakura releases the complete verified corpus and patch instructions',()=>{
   assert.match(home,/Download English patch/);
   assert.match(home,/<h1 id="title">SAKURA<br \/>NO UTA<\/h1>\s*<p class="dek">/);
   assert.doesNotMatch(home,/japanese-title/);
-  assert.match(home,/Patch version v1\.1\.0/);
+  assert.match(home,/Patch version v1\.1\.1/);
   assert.match(home,/href="#install"/);
   assert.match(home,/id="install"/);
-  assert.match(reader,/Script version v1\.1\.0/);
+  assert.match(reader,/Script version v1\.1\.1/);
   assert.match(home,/Updating an earlier MAO patch/);
   assert.match(home,/Removing the patch/);
   assert.match(home,/The game still shows Japanese or old text/);
@@ -92,9 +92,9 @@ test('prologue laughter remains audible dialogue with its speaker',()=>{
 test('download metadata and instructions identify the accepted game patch',()=>{
   const patch=JSON.parse(read('patch-release.json'));
   const home=read('index.html'),guide=read('patch-installation.txt');
-  assert.equal(patch.version,'1.1.0');
+  assert.equal(patch.version,'1.1.1');
   assert.equal(patch.passages,65164);
-  assert.equal(patch.patchSha256,'40941729f87c9d9ea29565429bf6beebe95d2ae55b5e9fefbeecbef20f305f03');
+  assert.equal(patch.patchSha256,'cc90f306049fea195a847b4e446f6e131456fa7a0f99a5ab2e406c8cdbbb9d2c');
   assert.equal(patch.openingMovie.path,'movie/ou9nq3hr2_mao.mp4');
   assert.equal(patch.openingMovie.sha256,'3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d');
   assert.equal(patch.openingMovie.englishSubtitleCues,17);

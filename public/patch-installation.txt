@@ -1,4 +1,4 @@
-SAKURA NO UTA — MAO ENGLISH PATCH v1.1.0
+SAKURA NO UTA — MAO ENGLISH PATCH v1.1.1
 Dancing above the Cherry Forest
 
 Website and bilingual reader: https://mao-tls.github.io/sakura-no-uta/
@@ -38,10 +38,12 @@ Install into the same game folder used by your existing Wine launcher,
 then fully quit and relaunch the game through that launcher. If the game
 is stored inside a Wine prefix or bottle, open that location first.
 The patch does not configure Wine or change your existing launcher.
-This release passed targeted checks in a private macOS Wine copy:
+The unchanged v1.1.0 engine passed targeted checks in a private macOS Wine copy:
 the reported passage in all three fonts, multi-page dialogue and backlog,
 history jumps, continuation-page quick saves/loads, font changes, long
 speaker labels, and five encountered characters' voice controls.
+This punctuation-only update adds manuscript, projection and package
+checks; it has not received a new native playthrough.
 KNOWN MOVIE ISSUE: the opening displays a blank/white picture in the tested
 macOS Sikarugir Wine wrapper. Movie playback in that wrapper is not fixed.
 Native Windows movie playback, sound, subtitles and return to the game
@@ -77,13 +79,26 @@ Broken wrapping or unexpected old text: confirm the patch checksum below,
 then restart. This release contains English word wrapping, punctuation
 attachment, baseline ellipses, and the leading-space correction.
 
+Individual voice controls all showing Unknown after meeting characters:
+v1.1.0 corrected the internal unlock keys, and this release retains that
+fix. Fully quit and relaunch after updating. Check the .502 checksum and
+that your launcher uses the folder you updated. Do not delete your save
+or system-data files: they contain progress and unlock information.
+If the problem persists, report the patch checksum and operating system;
+include your save and system-data files privately if you can.
+
+Skipping unread text: holding Ctrl is the original game's force-skip
+control. For read-only skipping, select Config > Text > Skip text > Read
+only and use the on-screen Skip button instead. If that button skips
+unread text with Read only selected, report that separately from Ctrl.
+
 Game will not start: move this .502 out of the game folder and try the
 unmodified game. If it also fails, check the original installation or
 Wine configuration. Restore your previous .502 backup if needed.
 
 CHECKSUM
-sakuranouta10th.pfs.502 (257,883,119 bytes)
-SHA-256: 40941729f87c9d9ea29565429bf6beebe95d2ae55b5e9fefbeecbef20f305f03
+sakuranouta10th.pfs.502 (257,883,121 bytes)
+SHA-256: cc90f306049fea195a847b4e446f6e131456fa7a0f99a5ab2e406c8cdbbb9d2c
 movie/ou9nq3hr2_mao.mp4 (182,260,111 bytes)
 SHA-256: 3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d
 Windows PowerShell: Get-FileHash .\sakuranouta10th.pfs.502 -Algorithm SHA256
