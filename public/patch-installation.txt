@@ -1,4 +1,4 @@
-SAKURA NO UTA — MAO ENGLISH PATCH v1.0.4
+SAKURA NO UTA — MAO ENGLISH PATCH v1.1.0
 Dancing above the Cherry Forest
 
 Website and bilingual reader: https://mao-tls.github.io/sakura-no-uta/
@@ -12,9 +12,10 @@ publisher's English edition. You need your own legally acquired game.
 
 WHAT IS INCLUDED
 The complete English script, localized text images and interface text:
-285 scripts, 65,164 lines, 136 images, and 221 interface strings.
-The ZIP contains only the translation overlay and these instructions.
-It does not include the game, its executable, voices, or a Wine runtime.
+285 scripts, 65,164 lines, 137 images, and 221 interface strings.
+The ZIP contains the translation overlay, an English-subtitled opening
+movie, and these instructions. It does not include the complete game,
+its executable, dialogue voices, or a Wine runtime.
 
 INSTALL ON WINDOWS
 1. Close the game and extract this ZIP.
@@ -24,34 +25,45 @@ INSTALL ON WINDOWS
    any earlier patch you may want to restore.
 4. Copy the supplied sakuranouta10th.pfs.502 into the game folder, alongside
    the executable and original archives. Keep its exact filename.
-5. Launch sakuranouta10th.exe normally.
+5. Copy the ZIP's movie folder into the game folder. It adds
+   movie/ou9nq3hr2_mao.mp4; do not rename or replace the original movie.
+6. Launch sakuranouta10th.exe normally.
 
 Do not replace or remove the original .pfs, .000, .001, .002, .003, or .500
 archives. No installer, Python, administrator access, or font installation
-is required to apply this patch. Extracting the ZIP and copying one file
-is the complete installation procedure.
+is required to apply this patch. Copy the .502 and the supplied movie folder.
 
 MACOS / WINE
 Install into the same game folder used by your existing Wine launcher,
 then fully quit and relaunch the game through that launcher. If the game
 is stored inside a Wine prefix or bottle, open that location first.
 The patch does not configure Wine or change your existing launcher.
-The v1.0.0 opening and English text wrapping were checked on macOS with
-Sikarugir Wine and DXMT. The v1.0.4 corrections are archive-verified;
-a new native runtime check has not been performed. Native Windows, other Wine configurations, and
-a manual start-to-finish playthrough have not been verified.
+This release passed targeted checks in a private macOS Wine copy:
+the reported passage in all three fonts, multi-page dialogue and backlog,
+history jumps, continuation-page quick saves/loads, font changes, long
+speaker labels, and five encountered characters' voice controls.
+KNOWN MOVIE ISSUE: the opening displays a blank/white picture in the tested
+macOS Sikarugir Wine wrapper. Movie playback in that wrapper is not fixed.
+Native Windows movie playback, sound, subtitles and return to the game
+have not been verified. Do not treat this release as a verified Wine
+movie-playback fix. Keep your previous patch backup if this blocks you.
+Native Windows, other Wine configurations, compatibility with every
+existing save, and a manual start-to-finish playthrough are not verified.
 There is no standalone Mac application in this download.
 
 UPDATE
 Close the game. Back up the installed sakuranouta10th.pfs.502 outside the
 game folder and replace it with the newer release's file. Keep exactly
-one file with that name. Relaunch the game so the new archive is loaded.
+one file with that name. Also copy the supplied movie folder, replacing
+only an earlier MAO ou9nq3hr2_mao.mp4 if present. Relaunch the game.
 
 REMOVE / RETURN TO JAPANESE
 Close the game and move the MAO sakuranouta10th.pfs.502 out of the game
 folder. If you backed up a pre-existing file with that exact name, restore
 it. Launch again. The original game archives and save files are untouched
 by this installation procedure. Back up your saves before switching patches.
+The added movie/ou9nq3hr2_mao.mp4 may also be removed; leave the original
+movie/ou9nq3hr2.wmv untouched.
 If an already-open text page retains old text after loading, advance to
 the next page or start a new game to check the currently installed patch.
 
@@ -70,8 +82,10 @@ unmodified game. If it also fails, check the original installation or
 Wine configuration. Restore your previous .502 backup if needed.
 
 CHECKSUM
-sakuranouta10th.pfs.502 (257,790,312 bytes)
-SHA-256: b5a97beb88e35c33675cafd692d91f82bd0a1293791f45f78c61e0a4cc348bc8
+sakuranouta10th.pfs.502 (257,883,119 bytes)
+SHA-256: 40941729f87c9d9ea29565429bf6beebe95d2ae55b5e9fefbeecbef20f305f03
+movie/ou9nq3hr2_mao.mp4 (182,260,111 bytes)
+SHA-256: 3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d
 Windows PowerShell: Get-FileHash .\sakuranouta10th.pfs.502 -Algorithm SHA256
 macOS Terminal: shasum -a 256 sakuranouta10th.pfs.502
 

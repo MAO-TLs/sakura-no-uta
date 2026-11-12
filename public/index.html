@@ -35,16 +35,16 @@
           <h1 id="title">SAKURA<br />NO UTA</h1>
           <p class="dek">An English translation of <em>Sakura no Uta</em>, with its literary references, wordplay, and distinct character voices carried into English. The complete game patch and unabridged bilingual script are available now.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/MAO-TLs/sakura-no-uta/releases/download/sakura-no-uta-v1.0.4/Sakura_no_Uta_MAO_English_v1.0.4.zip">Download English patch <span aria-hidden="true">↓</span></a>
+            <a class="button button-primary" href="https://github.com/MAO-TLs/sakura-no-uta/releases/download/sakura-no-uta-v1.1.0/Sakura_no_Uta_MAO_English_v1.1.0.zip">Download English patch <span aria-hidden="true">↓</span></a>
             <a class="button button-secondary" href="./script/">Script <span aria-hidden="true">→</span></a>
           </div>
-          <p class="compatibility"><span id="download-size">English patch ZIP</span> · <a href="https://github.com/MAO-TLs/sakura-no-uta/releases/tag/sakura-no-uta-v1.0.4">Release notes</a> · Patch version v1.0.4 · Windows + Wine · Japanese Re:Graphic 10th Anniversary edition required · <a href="#install">Installation instructions</a></p>
+          <p class="compatibility"><span id="download-size">English patch ZIP</span> · <a href="https://github.com/MAO-TLs/sakura-no-uta/releases/tag/sakura-no-uta-v1.1.0">Release notes</a> · Patch version v1.1.0 · Windows + Wine · Japanese Re:Graphic 10th Anniversary edition required · <a href="#install">Installation instructions</a></p>
         </div>
         <div aria-hidden="true"></div>
       </div>
     </section>
     <section class="release-strip" aria-label="Release information"><div class="shell release-grid">
-      <div><span class="release-label">Version</span><strong>v1.0.4</strong></div>
+      <div><span class="release-label">Version</span><strong>v1.1.0</strong></div>
       <div><span class="release-label">Script coverage</span><strong>Complete game</strong></div>
       <div><span class="release-label">Lines</span><strong>65,164</strong></div>
       <div><span class="release-label">Status</span><strong>Released</strong></div>
@@ -57,18 +57,18 @@
       <div class="install-heading"><div class="section-heading"><p class="eyebrow">Installation</p><h2>How to install the patch</h2></div><p class="install-requirement">Requires your own legally acquired Japanese <em>Sakura no Uta Re:Graphic 10th Anniversary edition</em>, Ver1.0.0. The original 2015 edition, <em>Sakura no Toki</em>, and other English releases are not supported.</p></div>
       <ol class="install-steps">
         <li><span>01</span><div><h3>Close the game and extract the ZIP</h3><p>Open the installed game folder containing <code>sakuranouta10th.exe</code>. Keep a backup of your saves. If a file named <code>sakuranouta10th.pfs.502</code> already exists, move it to a backup folder outside the game folder.</p></div></li>
-        <li><span>02</span><div><h3>Copy the English patch</h3><p>Copy the downloaded <code>sakuranouta10th.pfs.502</code> beside the executable. Leave all original archives, including <code>sakuranouta10th.pfs.500</code>, in place. No installer, Python, or font installation is needed.</p></div></li>
-        <li><span>03</span><div><h3>Launch normally</h3><p>Start <code>sakuranouta10th.exe</code>. On macOS with Wine, copy the file into the game folder your existing launcher uses, then fully quit and relaunch through that launcher. The download does not include a standalone Mac app.</p></div></li>
+        <li><span>02</span><div><h3>Copy the English patch</h3><p>Copy the downloaded <code>sakuranouta10th.pfs.502</code> and <code>movie</code> folder beside the executable. The movie folder adds the subtitled opening; it does not replace the original movie. Leave all original archives, including <code>sakuranouta10th.pfs.500</code>, in place. No installer, Python, or font installation is needed.</p></div></li>
+        <li><span>03</span><div><h3>Launch normally</h3><p>Start <code>sakuranouta10th.exe</code>. On macOS with Wine, copy the files into the game folder your existing launcher uses, then fully quit and relaunch through that launcher. The download does not include a standalone Mac app.</p></div></li>
       </ol>
       <p><a class="text-link" href="./patch-installation.txt">Read the complete installation guide <span aria-hidden="true">→</span></a></p>
       <div class="support-grid">
-        <details><summary>Updating an earlier MAO patch</summary><p>Close the game, move the existing <code>sakuranouta10th.pfs.502</code> to your backup folder, and copy the new file into its place. Keep exactly one file with that name. Restart to load the new patch.</p></details>
-        <details><summary>Removing the patch</summary><p>Close the game and move the MAO <code>sakuranouta10th.pfs.502</code> out of the game folder. Restore any file you backed up with that exact name. The original archives and saves are untouched by installation.</p></details>
+        <details><summary>Updating an earlier MAO patch</summary><p>Close the game, move the existing <code>sakuranouta10th.pfs.502</code> to your backup folder, and copy the new file into its place. Also copy the supplied <code>movie</code> folder. Keep exactly one patch file with that name. Restart to load the new patch.</p></details>
+        <details><summary>Removing the patch</summary><p>Close the game and move the MAO <code>sakuranouta10th.pfs.502</code> out of the game folder. Restore any file you backed up with that exact name. You may also remove <code>movie/ou9nq3hr2_mao.mp4</code>; leave the original movie alone. The original archives and saves are untouched by installation.</p></details>
         <details><summary>The game still shows Japanese or old text</summary><p>Check that the file is beside the executable, not in an extra subfolder, and that its extension has not been changed. Fully restart the game and confirm your launcher uses this installation. An already-open page restored from a save can retain old text; advance or start a new game to check. Temporarily remove other unofficial patches.</p></details>
         <details><summary>The game will not start</summary><p>Move the MAO file out of the game folder and try the unmodified game. If that also fails, check the original installation or Wine configuration. Restore your previous patch backup if needed.</p></details>
       </div>
-      <aside class="install-warning"><strong>Platform checks</strong><p>The v1.0.0 opening and English text wrapping were checked in Wine on macOS. The v1.0.4 corrections are archive-verified; a new native runtime check has not been performed. Native Windows and a manual start-to-finish playthrough have not been verified. The download contains the translation overlay only; the base game is required.</p></aside>
-      <details class="checksum-details"><summary>Verify the download</summary><p>The ZIP includes <code>SHA256SUMS.txt</code>. The patch file is 257,790,312 bytes.</p><p>Patch SHA-256<br><code>b5a97beb88e35c33675cafd692d91f82bd0a1293791f45f78c61e0a4cc348bc8</code></p><p>ZIP SHA-256<br><code id="download-sha">See the release checksum file.</code></p><p>PowerShell: <code>Get-FileHash .\sakuranouta10th.pfs.502 -Algorithm SHA256</code><br>macOS: <code>shasum -a 256 sakuranouta10th.pfs.502</code></p></details>
+      <aside class="install-warning"><strong>Platform checks and known movie issue</strong><p>Targeted macOS Wine checks passed for dialogue layout, pagination, backlog jumps, continuation-page quick save/load, speaker labels and encountered voice controls. The opening displays a blank/white picture in the tested macOS Sikarugir Wine wrapper; that movie-playback issue is not fixed. Native Windows movie playback and a full playthrough have not been verified. Keep your previous patch backup. The base game is required.</p></aside>
+      <details class="checksum-details"><summary>Verify the download</summary><p>The ZIP includes <code>SHA256SUMS.txt</code>. The patch file is 257,883,119 bytes.</p><p>Patch SHA-256<br><code>40941729f87c9d9ea29565429bf6beebe95d2ae55b5e9fefbeecbef20f305f03</code></p><p>ZIP SHA-256<br><code id="download-sha">See the release checksum file.</code></p><p>PowerShell: <code>Get-FileHash .\sakuranouta10th.pfs.502 -Algorithm SHA256</code><br>macOS: <code>shasum -a 256 sakuranouta10th.pfs.502</code></p></details>
       <p class="report-link">Found a problem? <a href="mailto:mao-tls@proton.me">Email MAO</a> with the patch version, operating system, and a screenshot or reader line link. Mark story details as spoilers.</p>
     </div></section>
     <section class="section shell credits-section" aria-labelledby="credits-heading">

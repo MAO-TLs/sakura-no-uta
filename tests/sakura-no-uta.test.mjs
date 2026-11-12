@@ -17,15 +17,15 @@ test('Sakura releases the complete verified corpus and patch instructions',()=>{
   assert.match(home,/Download English patch/);
   assert.match(home,/<h1 id="title">SAKURA<br \/>NO UTA<\/h1>\s*<p class="dek">/);
   assert.doesNotMatch(home,/japanese-title/);
-  assert.match(home,/Patch version v1\.0\.4/);
+  assert.match(home,/Patch version v1\.1\.0/);
   assert.match(home,/href="#install"/);
   assert.match(home,/id="install"/);
-  assert.match(reader,/Script version v1\.0\.4/);
+  assert.match(reader,/Script version v1\.1\.0/);
   assert.match(home,/Updating an earlier MAO patch/);
   assert.match(home,/Removing the patch/);
   assert.match(home,/The game still shows Japanese or old text/);
   assert.match(home,/10th Anniversary edition/);
-  assert.match(home,/Native Windows and a manual start-to-finish playthrough have not been verified/);
+  assert.match(home,/Native Windows movie playback and a full playthrough have not been verified/);
   assert.match(home+reader,/A legally acquired copy/);
   assert.doesNotMatch(home+reader,/MUMBAI|Hinglish|14,839|Complete draft|in development|Not released|not yet published/i);
 });
@@ -60,11 +60,16 @@ test('every reader passage and search entry agrees, with only inert presentation
       // Source narration, thoughts, and quotations without a speaker are distinct.
       if(row.ja.html.includes('class="speaker"') && row.ja.text.split('\n').slice(1).join('\n').startsWith('「')) {
         assert.ok(row.en.html.includes('class="speaker"'),script.id+':'+row.key);
-        const utterance=row.en.text.split('\n').slice(1).join('\n');
-        assert.match(utterance,/^“/,script.id+':'+row.key);
-        // Open quotation continuations are used for recited multi-line verse.
-        if(utterance.includes('”')) {
-          assert.doesNotMatch(utterance.replace(/“[^”]*”/g,''),/[A-Za-z]/,script.id+':'+row.key);
+        const sourceUtterance=row.ja.text.split('\n').slice(1).join('\n');
+        // Some named source blocks also contain an explicit narration clause.
+        // Preserve that clause rather than forcing the entire block into speech.
+        if (/^「[^」]*」$/.test(sourceUtterance.trim())) {
+          const utterance=row.en.text.split('\n').slice(1).join('\n');
+          assert.match(utterance,/^“/,script.id+':'+row.key);
+          // Open quotation continuations are used for recited multi-line verse.
+          if(utterance.includes('”')) {
+            assert.doesNotMatch(utterance.replace(/“[^”]*”/g,''),/[A-Za-z]/,script.id+':'+row.key);
+          }
         }
       }
       expected.push({script:script.id,key:row.key,ja:row.ja.text,en:row.en.text});
@@ -87,12 +92,21 @@ test('prologue laughter remains audible dialogue with its speaker',()=>{
 test('download metadata and instructions identify the accepted game patch',()=>{
   const patch=JSON.parse(read('patch-release.json'));
   const home=read('index.html'),guide=read('patch-installation.txt');
-  assert.equal(patch.version,'1.0.4');
+  assert.equal(patch.version,'1.1.0');
   assert.equal(patch.passages,65164);
-  assert.equal(patch.patchSha256,'b5a97beb88e35c33675cafd692d91f82bd0a1293791f45f78c61e0a4cc348bc8');
+  assert.equal(patch.patchSha256,'40941729f87c9d9ea29565429bf6beebe95d2ae55b5e9fefbeecbef20f305f03');
+  assert.equal(patch.openingMovie.path,'movie/ou9nq3hr2_mao.mp4');
+  assert.equal(patch.openingMovie.sha256,'3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d');
+  assert.equal(patch.openingMovie.englishSubtitleCues,17);
+  assert.ok(guide.includes(patch.openingMovie.path));
   assert.ok(home.includes(patch.downloadUrl));
   assert.ok(home.includes(patch.releaseUrl));
   assert.ok(guide.includes(patch.patchSha256));
+  assert.ok(home.includes(patch.patchSha256));
+  assert.ok(home.includes(patch.openingMovie.path));
+  assert.match(home,/opening displays a blank\/white picture/);
+  assert.match(guide,/KNOWN MOVIE ISSUE/);
+  assert.match(patch.runtimeCheck,/movie playback.*not fixed/i);
   assert.match(guide,/UPDATE[\s\S]*REMOVE \/ RETURN TO JAPANESE[\s\S]*TROUBLESHOOTING/);
   assert.ok(patch.downloadUrl.startsWith('https://github.com/MAO-TLs/sakura-no-uta/releases/download/'));
   assert.ok(patch.releaseUrl.startsWith('https://github.com/MAO-TLs/sakura-no-uta/releases/tag/'));

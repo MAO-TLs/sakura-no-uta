@@ -1,5 +1,5 @@
 try {
-  const response = await fetch(new URL('./patch-release.json', import.meta.url));
+  const response = await fetch(new URL('./patch-release.json', import.meta.url), {cache: 'no-cache'});
   if (!response.ok) throw Error('Release metadata unavailable');
   const patch = await response.json();
   document.getElementById('download-size').textContent = (patch.size / 1e6).toFixed(1) + ' MB';
