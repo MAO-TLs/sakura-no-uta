@@ -17,15 +17,15 @@ test('Sakura releases the complete verified corpus and patch instructions',()=>{
   assert.match(home,/Download English patch/);
   assert.match(home,/<h1 id="title">SAKURA<br \/>NO UTA<\/h1>\s*<p class="dek">/);
   assert.doesNotMatch(home,/japanese-title/);
-  assert.match(home,/Patch version v1\.1\.2/);
+  assert.match(home,/Patch version v1\.1\.3/);
   assert.match(home,/href="#install"/);
   assert.match(home,/id="install"/);
-  assert.match(reader,/Script version v1\.1\.2/);
+  assert.match(reader,/Script version v1\.1\.3/);
   assert.match(home,/Updating an earlier MAO patch/);
   assert.match(home,/Removing the patch/);
   assert.match(home,/The game still shows Japanese or old text/);
   assert.match(home,/10th Anniversary edition/);
-  assert.match(home,/These checks are not a native Windows or full-game playthrough/);
+  assert.match(home,/not a new native Windows or full-game playthrough/);
   assert.match(home+reader,/A legally acquired copy/);
   assert.doesNotMatch(home+reader,/MUMBAI|Hinglish|14,839|Complete draft|in development|Not released|not yet published/i);
 });
@@ -89,12 +89,27 @@ test('prologue laughter remains audible dialogue with its speaker',()=>{
   }
 });
 
+test('source-verified character reference corrections reach the reader',()=>{
+  const passage=(script,key)=>JSON.parse(read(`data/scripts/${script}.json`)).rows.find(r=>r.key===String(key)).en;
+  assert.match(passage('03_picapica_01_1',234).text,/supported him more than anyone/);
+  assert.match(passage('02_abend_07_2',24).text,/her start-of-year address, didn't she/);
+  assert.match(passage('02_abend_07_2',41).text,/She said.*that she couldn't/);
+  assert.match(passage('02_abend_14_1',150).text,/contacted her, so she/);
+  assert.match(passage('03_picapica_12_2',50).text,/^She admires/);
+  for(const entry of JSON.parse(read('data/index.json')).scriptsIndex){
+    for(const row of JSON.parse(read(`data/scripts/${entry.id}.json`)).rows){
+      assert.doesNotMatch(row.en.text,/\bToriya\b/);
+      assert.doesNotMatch(row.en.html,/\bToriya\b/);
+    }
+  }
+});
+
 test('download metadata and instructions identify the accepted game patch',()=>{
   const patch=JSON.parse(read('patch-release.json'));
   const home=read('index.html'),guide=read('patch-installation.txt');
-  assert.equal(patch.version,'1.1.2');
+  assert.equal(patch.version,'1.1.3');
   assert.equal(patch.passages,65164);
-  assert.equal(patch.patchSha256,'33d83daef6498aed5e670ebbcdc88201e1bd830f561c26a6971253a257b85dce');
+  assert.equal(patch.patchSha256,'632e38516bbc97d05f60f024b42490a960d071dca2b3895c4b5627ff02f0e61b');
   assert.equal(patch.openingMovie.path,'movie/ou9nq3hr2_mao.mp4');
   assert.equal(patch.openingMovie.sha256,'3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d');
   assert.equal(patch.openingMovie.englishSubtitleCues,17);

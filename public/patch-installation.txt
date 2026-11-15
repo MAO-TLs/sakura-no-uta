@@ -1,4 +1,4 @@
-SAKURA NO UTA — MAO ENGLISH PATCH v1.1.2
+SAKURA NO UTA — MAO ENGLISH PATCH v1.1.3
 Dancing above the Cherry Forest
 
 Website and bilingual reader: https://mao-tls.github.io/sakura-no-uta/
@@ -42,10 +42,12 @@ The v1.1.0 engine passed targeted checks in a private macOS Wine copy:
 the reported passage in all three fonts, multi-page dialogue and backlog,
 history jumps, continuation-page quick saves/loads, font changes, long
 speaker labels, and five encountered characters' voice controls.
-This update corrects a source-audio-verified surname, recovers encountered
-characters' voice controls from the original read-history markers, and
-clears stale hidden measuring text restored by older saves. Targeted private
-Wine checks do not constitute a new native Windows or whole-game playthrough.
+v1.1.2 corrected a source-audio-verified surname, added recovery of encountered
+characters' voice controls from original read-history markers, and cleared
+stale hidden measuring text restored by older saves. v1.1.3 corrects character
+references and surname consistency only; its engine and movie are unchanged.
+Targeted private Wine checks do not constitute a new native Windows or
+whole-game playthrough.
 KNOWN MOVIE ISSUE: the opening displays a blank/white picture in the tested
 macOS Sikarugir Wine wrapper. Movie playback in that wrapper is not fixed.
 Native Windows movie playback, sound, subtitles and return to the game
@@ -82,7 +84,7 @@ then restart. This release contains English word wrapping, punctuation
 attachment, baseline ellipses, and the leading-space correction.
 
 Individual voice controls all showing Unknown after meeting characters:
-v1.1.0 corrected the internal unlock keys. This update also recovers missing
+v1.1.0 corrected the internal unlock keys. Since v1.1.2, the patch also recovers missing
 unlocks when read history proves the original unlock point was completed.
 Open Config > Sound after updating. Unseen characters remain Unknown;
 volume and mute settings are preserved. Fully quit and relaunch after
@@ -109,8 +111,8 @@ unmodified game. If it also fails, check the original installation or
 Wine configuration. Restore your previous .502 backup if needed.
 
 CHECKSUM
-sakuranouta10th.pfs.502 (257,887,527 bytes)
-SHA-256: 33d83daef6498aed5e670ebbcdc88201e1bd830f561c26a6971253a257b85dce
+sakuranouta10th.pfs.502 (257,887,600 bytes)
+SHA-256: 632e38516bbc97d05f60f024b42490a960d071dca2b3895c4b5627ff02f0e61b
 movie/ou9nq3hr2_mao.mp4 (182,260,111 bytes)
 SHA-256: 3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d
 Windows PowerShell: Get-FileHash .\sakuranouta10th.pfs.502 -Algorithm SHA256
