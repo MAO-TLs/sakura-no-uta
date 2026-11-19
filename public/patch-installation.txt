@@ -1,4 +1,4 @@
-SAKURA NO UTA — MAO ENGLISH PATCH v1.1.3
+SAKURA NO UTA — MAO ENGLISH PATCH v1.1.4
 Dancing above the Cherry Forest
 
 Website and bilingual reader: https://mao-tls.github.io/sakura-no-uta/
@@ -111,8 +111,8 @@ unmodified game. If it also fails, check the original installation or
 Wine configuration. Restore your previous .502 backup if needed.
 
 CHECKSUM
-sakuranouta10th.pfs.502 (257,887,600 bytes)
-SHA-256: 632e38516bbc97d05f60f024b42490a960d071dca2b3895c4b5627ff02f0e61b
+sakuranouta10th.pfs.502 (257,887,595 bytes)
+SHA-256: e9ee8562ec9fb8ef8bf479a0ee464899b8f9d649df8e1281c877746480e889a9
 movie/ou9nq3hr2_mao.mp4 (182,260,111 bytes)
 SHA-256: 3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d
 Windows PowerShell: Get-FileHash .\sakuranouta10th.pfs.502 -Algorithm SHA256
@@ -131,3 +131,8 @@ Original work: MAKURA
 
 Unofficial, noncommercial fan translation. Original works and trademarks
 belong to their respective owners.
+
+
+v1.1.4 replaces five unsupported accented letters in the in-game script.
+The opening, engine, and interface are unchanged. Native playback has not
+been retested for this text-only update.
