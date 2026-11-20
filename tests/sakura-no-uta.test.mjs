@@ -17,10 +17,10 @@ test('Sakura releases the complete verified corpus and patch instructions',()=>{
   assert.match(home,/Download English patch/);
   assert.match(home,/<h1 id="title">SAKURA<br \/>NO UTA<\/h1>\s*<p class="dek">/);
   assert.doesNotMatch(home,/japanese-title/);
-  assert.match(home,/Patch version v1\.1\.4/);
+  assert.match(home,/Patch version v1\.1\.5/);
   assert.match(home,/href="#install"/);
   assert.match(home,/id="install"/);
-  assert.match(reader,/Script version v1\.1\.4/);
+  assert.match(reader,/Script version v1\.1\.5/);
   assert.match(home,/Updating an earlier MAO patch/);
   assert.match(home,/Removing the patch/);
   assert.match(home,/The game still shows Japanese or old text/);
@@ -89,6 +89,19 @@ test('prologue laughter remains audible dialogue with its speaker',()=>{
   }
 });
 
+test('English mirrors every retail font-size effect without adding annotations',()=>{
+  const index=JSON.parse(read('data/index.json'));
+  const sizes={f2:0,f4:0,f5:0};
+  for(const script of index.scriptsIndex) {
+    for(const row of JSON.parse(read('data/scripts/'+script.id+'.json')).rows) {
+      const styles=html=>Array.from(html.matchAll(/<span class="source-font-(f[245])">/g),m=>m[1]);
+      assert.deepEqual(styles(row.en.html),styles(row.ja.html),script.id+':'+row.key);
+      for(const style of styles(row.en.html)) sizes[style]++;
+    }
+  }
+  assert.deepEqual(sizes,{f2:27,f4:15,f5:5});
+});
+
 test('source-verified character reference corrections reach the reader',()=>{
   const passage=(script,key)=>JSON.parse(read(`data/scripts/${script}.json`)).rows.find(r=>r.key===String(key)).en;
   assert.match(passage('03_picapica_01_1',234).text,/supported him more than anyone/);
@@ -107,10 +120,10 @@ test('source-verified character reference corrections reach the reader',()=>{
 test('download metadata and instructions identify the accepted game patch',()=>{
   const patch=JSON.parse(read('patch-release.json'));
   const home=read('index.html'),guide=read('patch-installation.txt');
-  assert.equal(patch.version,'1.1.4');
+  assert.equal(patch.version,'1.1.5');
   assert.equal(JSON.parse(read('data/index.json')).version,patch.version);
   assert.equal(patch.passages,65164);
-  assert.equal(patch.patchSha256,'e9ee8562ec9fb8ef8bf479a0ee464899b8f9d649df8e1281c877746480e889a9');
+  assert.equal(patch.patchSha256,'ad989c33e09630378266690b0e314ce957a23b478471609bce7e4a4ebc2748c9');
   assert.equal(patch.openingMovie.path,'movie/ou9nq3hr2_mao.mp4');
   assert.equal(patch.openingMovie.sha256,'3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d');
   assert.equal(patch.openingMovie.englishSubtitleCues,17);
