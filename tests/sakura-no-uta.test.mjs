@@ -17,10 +17,10 @@ test('Sakura releases the complete verified corpus and patch instructions',()=>{
   assert.match(home,/Download English patch/);
   assert.match(home,/<h1 id="title">SAKURA<br \/>NO UTA<\/h1>\s*<p class="dek">/);
   assert.doesNotMatch(home,/japanese-title/);
-  assert.match(home,/Patch version v1\.1\.6/);
+  assert.match(home,/Patch version v1\.1\.7/);
   assert.match(home,/href="#install"/);
   assert.match(home,/id="install"/);
-  assert.match(reader,/Script version v1\.1\.6/);
+  assert.match(reader,/Script version v1\.1\.7/);
   assert.match(home,/Updating an earlier MAO patch/);
   assert.match(home,/Removing the patch/);
   assert.match(home,/The game still shows Japanese or old text/);
@@ -47,7 +47,7 @@ test('every reader passage and search entry agrees, with only inert presentation
         assert.ok(row[lang].html.trim());
         const tags=[...row[lang].html.matchAll(/<\/?([a-z]+)([^>]*)>/g)];
         for(const [,tag,attrs] of tags) {
-          assert.ok(['span','div','ruby','rt','br','ul','li'].includes(tag),tag);
+          assert.ok(['span','div','ruby','rt','em','br','ul','li'].includes(tag),tag);
           assert.match(attrs,/^(?: class="[a-z0-9-]+")?$/);
         }
         assert.doesNotMatch(row[lang].html,/<script|onerror|source_ja_payload|revision_notes/);
@@ -120,10 +120,10 @@ test('source-verified character reference corrections reach the reader',()=>{
 test('download metadata and instructions identify the accepted game patch',()=>{
   const patch=JSON.parse(read('patch-release.json'));
   const home=read('index.html'),guide=read('patch-installation.txt');
-  assert.equal(patch.version,'1.1.6');
+  assert.equal(patch.version,'1.1.7');
   assert.equal(JSON.parse(read('data/index.json')).version,patch.version);
   assert.equal(patch.passages,65164);
-  assert.equal(patch.patchSha256,'9011974e07bd0d6710715e99f2d1800295acbcb1b65f150da6f19da190467ce0');
+  assert.equal(patch.patchSha256,'46e8be6486a45f44c967a11ba41585ad6114668e4f81434e6ef71717633824b7');
   assert.equal(patch.openingMovie.path,'movie/ou9nq3hr2_mao.mp4');
   assert.equal(patch.openingMovie.sha256,'3fd39c19f7cf3d7f036589370abbb7f2e1dc7460d5cd91eb35a85bc35dc0189d');
   assert.equal(patch.openingMovie.englishSubtitleCues,17);
